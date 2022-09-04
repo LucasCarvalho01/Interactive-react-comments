@@ -2,7 +2,7 @@ import React from "react";
 
 // const URL_DATA = "/data.json";
 
-const useFetch = (URL_DATA) => {
+const useFetch = (URL_DATA, content) => {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -16,7 +16,7 @@ const useFetch = (URL_DATA) => {
       setLoading(true);
 
       response = await fetch(URL_DATA);
-      json = response.json();
+      json = await response.json();
 
       // If request failed
       if (response.ok === false) {
@@ -29,14 +29,19 @@ const useFetch = (URL_DATA) => {
       setError(err);
     } finally {
       setLoading(false);
-      setData(json);
+
+      switch (content) {
+        // case to fetch feed comments
+        default:
+          setData(json["comments"]);
+      }
 
       return {
         response,
         json,
       };
     }
-  }, [URL_DATA]);
+  }, [URL_DATA, content]);
 
   return {
     data,

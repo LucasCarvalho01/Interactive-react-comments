@@ -1,0 +1,4 @@
+.replyBtn:hover  svg path {
+  cursor: pointer;
+  fill: #a5b4fc
+}

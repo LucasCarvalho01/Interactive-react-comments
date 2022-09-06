@@ -32,6 +32,10 @@ const useFetch = (URL_DATA, content) => {
 
       switch (content) {
         // case to fetch feed comments
+        case "user":
+          setData(json["currentUser"]);
+          break;
+
         default:
           setData(json["comments"]);
       }

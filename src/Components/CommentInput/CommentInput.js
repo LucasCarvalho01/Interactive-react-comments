@@ -1,10 +1,11 @@
 import React from "react";
-import userPhoto from "../../images/avatars/image-juliusomo.png";
+import { UserContext } from "../../UserContext.js";
 import Button from "../FormElements/Button";
 import Textarea from "../FormElements/Textarea";
 
 const CommentInput = ({ action }) => {
   const [message, setMessage] = React.useState("");
+  const { userdata, loading } = React.useContext(UserContext);
 
   return (
     <div className="relative">
@@ -21,7 +22,7 @@ const CommentInput = ({ action }) => {
       </form>
 
       <div className="inline-block rounded-full overflow-hidden absolute left-0 -bottom-3">
-        <img src={userPhoto} alt="User profile" />
+        {userdata && <img src={userdata.image.png} alt="User profile" />}
       </div>
     </div>
   );

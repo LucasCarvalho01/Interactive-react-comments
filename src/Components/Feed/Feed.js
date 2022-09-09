@@ -3,7 +3,7 @@ import { UserContext } from "../../UserContext";
 import FeedCard from "./FeedCard";
 
 const Feed = () => {
-  const { comments, loading, error } = React.useContext(UserContext);
+  const { userdata, comments, loading, error } = React.useContext(UserContext);
 
   return (
     <section className="my-8">
@@ -12,6 +12,7 @@ const Feed = () => {
       {comments &&
         comments.map(({ id, content, user, score, replies, createdAt }) => (
           <FeedCard
+            userLogin={userdata}
             key={id}
             content={content}
             user={user}

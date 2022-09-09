@@ -2,3 +2,8 @@
   cursor: pointer;
   fill: #a5b4fc
 }
+
+.deleteBtn:hover svg path {
+  cursor: pointer;
+  fill: rgb(252, 165, 165);
+}

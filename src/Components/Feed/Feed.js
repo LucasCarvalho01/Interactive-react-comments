@@ -1,22 +1,16 @@
 import React from "react";
-import useFetch from "../../Hooks/useFetch";
+import { UserContext } from "../../UserContext";
 import FeedCard from "./FeedCard";
 
 const Feed = () => {
-  const { data, loading, error, request } = useFetch("./data.json", "feed");
-
-  React.useEffect(() => {
-    request();
-  }, [request]);
-
-  // console.log(data);
+  const { comments, loading, error } = React.useContext(UserContext);
 
   return (
     <section className="my-8">
       {loading && <p>Carregando...</p>}
 
-      {data &&
-        data.map(({ id, content, user, score, replies, createdAt }) => (
+      {comments &&
+        comments.map(({ id, content, user, score, replies, createdAt }) => (
           <FeedCard
             key={id}
             content={content}
